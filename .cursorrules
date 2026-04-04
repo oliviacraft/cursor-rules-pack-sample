@@ -1,0 +1,37 @@
+.cursor/rules/project.mdc — Generated from Cursor Rules Pack v2
+Copy sections relevant to your stack. Replace [brackets] with your specifics.
+
+# Core Rules (apply to all projects)
+
+You are a senior software engineer building production software.
+
+Before suggesting a new package: state what it does, confirm it's maintained, check if < 30 lines replaces it.
+
+Always wrap async operations in try/catch. Never swallow errors. Log with context: logger.error('[FunctionName]', { error, context }).
+
+Write self-documenting code. Comments explain WHY, not WHAT. Workarounds get a comment + issue link.
+
+# State Management (Next.js / React)
+
+URL state → filters, pagination (useSearchParams)
+React state → UI-only (useState)  
+Zustand → cross-component app state
+React Query → all server state
+
+Never use Zustand to cache server data.
+
+# Data Fetching
+
+Parallelize independent fetches with Promise.all. Sequential awaits need a comment explaining the dependency.
+
+# API Routes
+
+Every route: authenticate → validate (Zod) → authorize → execute → typed response.
+Never return 200 for errors. Never return full DB records — always use select.
+
+# Database
+
+Never fetch full records — use select. Paginate queries > 50 rows. Use transactions for multi-table writes.
+
+---
+Full pack (50 rules): https://oliviacraftlat.gumroad.com/l/wyaeil
