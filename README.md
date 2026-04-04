@@ -135,46 +135,39 @@ const [user, posts, analytics] = await Promise.all([
 
 ---
 
-### Rule 6 — API Route Security Template
+### Rule 6 — Webhook Security
 
 ```
-Every API route must follow this checklist before doing any work:
-1. Authenticate the request — return 401 if no valid session
-2. Validate the request body with Zod — return 400 with field errors if invalid
-3. Authorize the action — verify the user can perform this operation on this resource
-4. Execute the operation
-5. Return typed response: { data } on success, { error } on failure
-6. Use correct HTTP status codes — never return 200 for errors
-
-If any step is missing, the route is incomplete.
+For incoming webhooks: verify the signature in the first 3 lines of the handler — reject immediately if invalid. Respond with HTTP 200 within 5 seconds — offload processing to a background job. Store the raw webhook event before processing. Implement idempotency using the event ID.
 ```
 
-**Template:**
+**Why this matters:** Most webhook implementations process the payload inline and skip signature verification. This leads to (1) spoofed events, (2) timeouts when Stripe/GitHub retries, and (3) duplicate processing when events are delivered twice.
+
+**Stripe webhook pattern:**
 ```typescript
 export async function POST(req: Request) {
+  // 1. Verify signature immediately — before touching the body
+  const body = await req.text()
+  const signature = req.headers.get('stripe-signature')!
+
+  let event: Stripe.Event
   try {
-    // 1. Auth
-    const session = await getServerSession()
-    if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-
-    // 2. Validate
-    const body = await req.json()
-    const parsed = createItemSchema.safeParse(body)
-    if (!parsed.success) return NextResponse.json({ error: parsed.error.flatten() }, { status: 400 })
-
-    // 3. Authorize
-    const canCreate = await userCanCreateItem(session.user.id)
-    if (!canCreate) return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
-
-    // 4. Execute
-    const item = await db.item.create({ data: { ...parsed.data, userId: session.user.id } })
-
-    // 5. Respond
-    return NextResponse.json({ data: item }, { status: 201 })
-  } catch (error) {
-    logger.error('[POST /api/items]', { error })
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
+    event = stripe.webhooks.constructEvent(body, signature, env.STRIPE_WEBHOOK_SECRET)
+  } catch {
+    return new Response('Invalid signature', { status: 400 })
   }
+
+  // 2. Store first — idempotency via upsert
+  await db.webhookEvent.upsert({
+    where: { stripeEventId: event.id },
+    create: { stripeEventId: event.id, type: event.type, payload: event as any },
+    update: {}, // already stored — no-op
+  })
+
+  // 3. Offload — respond 200 immediately, process async
+  await inngest.send({ name: 'stripe/event.received', data: { eventId: event.id } })
+
+  return new Response('OK', { status: 200 })
 }
 ```
 
