@@ -1,0 +1,23 @@
+{
+  "name": "cursor-rules-pack",
+  "displayName": "Cursor Rules Pack",
+  "version": "1.0.0",
+  "description": "7 production-tested Cursor Rules \u2014 dependency discipline, error handling, state management, webhook security, and more. Free sample from the full 50-rule pack.",
+  "author": {
+    "name": "OliviaCraft",
+    "url": "https://oliviacraft.lat"
+  },
+  "homepage": "https://github.com/oliviacraft/cursor-rules-pack-sample",
+  "repository": "https://github.com/oliviacraft/cursor-rules-pack-sample",
+  "license": "MIT",
+  "keywords": [
+    "cursor-rules",
+    "typescript",
+    "nextjs",
+    "prisma",
+    "best-practices",
+    "production"
+  ],
+  "category": "developer-tools",
+  "rules": "./rules/"
+}
