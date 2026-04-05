@@ -1,0 +1,17 @@
+---
+description: Database and backend rules — always use select, API route security checklist, webhook idempotency, Prisma best practices.
+alwaysApply: false
+globs: ["app/api/**/*", "lib/**/*.ts", "server/**/*.ts", "prisma/**/*"]
+---
+
+## Database Query Safety
+Never return full database records to the client — always use `select` to specify exactly which fields are needed. This prevents exposing password hashes, reset tokens, and sensitive fields. Paginate queries that could return more than 50 rows.
+
+## API Route Security Checklist
+Every route must: (1) authenticate first — return 401 if no session, (2) validate body with Zod — return 400 with field errors if invalid, (3) authorize the action — return 403 if user can't do this, (4) return typed responses `{ data }` on success / `{ error }` on failure, (5) correct HTTP status codes — never return 200 for errors.
+
+## Webhook Security
+Verify the signature in the first 3 lines — reject immediately if invalid. Respond with HTTP 200 within 5 seconds — offload processing to a background job. Implement idempotency using the event ID (upsert, not create).
+
+## Prisma Best Practices
+Use `db.$transaction()` for operations writing to multiple tables. Every model needs: `id` (cuid default), `createdAt`, `updatedAt`. Add `@@index` for every foreign key and every field used in WHERE clauses.
