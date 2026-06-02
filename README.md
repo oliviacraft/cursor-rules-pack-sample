@@ -1,78 +1,69 @@
-# Cursor Rules Pack — Sample Plugin
+# Cursor Rules Pack — Free Starter Kit
 
-A **[Open Plugins](https://open-plugins.com)**-compatible plugin with 7 production-tested Cursor Rules for TypeScript projects.
+> Pre-built `.mdc` rules and `CLAUDE.md` templates for developers using Cursor Agent Mode and Claude Code.
 
-→ **[Get the full 50-rule pack for $27](https://oliviacraftlat.gumroad.com/l/wyaeil)**
-
----
-
-## Structure
-
-```
-cursor-rules-pack-sample/
-├── .plugin/
-│   └── plugin.json     # Open Plugins manifest
-├── rules/
-│   ├── core.mdc        # Always-active: dependency discipline, error handling, naming
-│   ├── nextjs.mdc      # Next.js App Router rules
-│   ├── database.mdc    # Prisma, API security, webhook idempotency
-│   └── patterns.mdc    # Data fetching patterns
-└── .cursorrules        # Legacy Cursor format (same rules)
-```
+**Free starter** → [oliviacraftlat.gumroad.com/l/pomoo](https://oliviacraftlat.gumroad.com/l/pomoo)
+**Full pack (50 files, 14 stacks)** → [oliviacraftlat.gumroad.com/l/wyaeil](https://oliviacraftlat.gumroad.com/l/wyaeil) — $27
 
 ---
 
-## Rules Included
+## The problem this solves
 
-### `rules/core.mdc` — always active
-- **Dependency Discipline** — evaluate packages before installing; never add one for < 20 lines
-- **Explicit Error Handling** — typed errors, no silent failures, log with context
-- **Comments Policy** — explain WHY not WHAT; workarounds get an issue link
-- **Naming Conventions** — PascalCase, camelCase, booleans start with `is`/`has`/`can`
-- **File Size Discipline** — under 200 lines, co-locate related files
+Every new Cursor or Claude Code session starts blank. The model doesn't remember your conventions, architecture decisions, or "never do X" rules.
 
-### `rules/nextjs.mdc` — Next.js App Router projects
-- Server Components First — default to RSC, explain every "use client"
-- State Management Hierarchy — URL → React → Zustand → React Query
-- Parallel Data Fetching — Promise.all over sequential awaits
-- Loading & Error States — skeleton components, actionable error messages
+You re-explain them every session. Or you write a rules file once, accumulate 400 lines, and watch it fail silently after context compaction.
 
-### `rules/database.mdc` — backend/API files
-- Database Query Safety — always use `select`, paginate > 50 rows
-- API Route Security — auth → validate (Zod) → authorize → respond
-- **Webhook Security** — verify signature first, respond in 5s, idempotency via upsert
-- Prisma Best Practices — transactions, indexes, schema standards
-
-### `rules/patterns.mdc` — optional patterns
-- Before/after code examples for parallel fetching and typed error results
+This kit gives you a structured, minimal starting point that actually works.
 
 ---
 
-## Installation
+## What's included (free starter)
 
-**Via Open Plugins-compatible tool (e.g. cursor.directory):**
-Install directly — rules are auto-discovered from `rules/*.mdc`.
-
-**Manual:**
-Copy individual `.mdc` files to your `.cursor/rules/` directory.
-
-**Legacy `.cursorrules`:**
-Copy the `.cursorrules` file to your project root.
+- `CLAUDE.md` template — three-section structure that survives compaction
+- `.cursor/rules/` templates for TypeScript, Python, Go, React
+- Anti scope creep rule
+- Compaction amnesia prevention checklist
+- Context bloat prevention rules
 
 ---
 
-## What's in the Full Pack
+## Gists (copy-paste ready)
 
-| Section | Rules | Covers |
-|---------|-------|--------|
-| General Coding | 10 | TypeScript, error handling, naming, security, testing |
-| Next.js & React | 10 | Server components, forms, state, auth, loading states |
-| Database & Backend | 10 | Prisma, transactions, schema design, API patterns |
-| AI Behavior | 10 | Uncertainty handling, refactoring, code review |
-| Project Templates | 10 | SaaS, APIs, CLI tools, freelance client work |
-
-→ **[$27 — instant download](https://oliviacraftlat.gumroad.com/l/wyaeil)** | Includes setup guide and per-project-type starter templates.
+| Gist | Use case |
+|------|----------|
+| [How to set up .mdc for multi-language repos](https://gist.github.com/oliviacraft/281f8ba971d238e8ff0ae87e2e99f21c) | Python + Java + TypeScript in one project |
+| [Anti scope creep .mdc rule](https://gist.github.com/oliviacraft/2b2fbfcb0c3541ee1768be9a2a379eba) | Prevent agent from expanding task scope |
 
 ---
 
-[@OliviaCraftLat](https://x.com/OliviaCraftLat) · [oliviacraft.lat](https://oliviacraft.lat) · MIT License
+## Articles
+
+| Article | Pain addressed |
+|---------|---------------|
+| [How to Fix Cursor Compaction Amnesia](https://dev.to/olivia_craft/how-to-fix-cursor-compaction-amnesia-and-why-your-rules-stop-working-1c19) | Rules stop working after context compaction |
+
+---
+
+## Common failures this fixes
+
+**Rules ignored in Agent Mode** → scope your `.mdc` with proper globs, not a single root `.cursorrules`
+
+**Context lost after compaction** → three-section CLAUDE.md, hard constraints first
+
+**Scope creep across sessions** → explicit scope constraints in always-apply rule
+
+**Rules deleted on Cursor launch** → migrate from root `.cursorrules` to `.cursor/rules/*.mdc`
+
+---
+
+## Full pack
+
+50 `.mdc` files across 14 stacks: React, Next.js, TypeScript, Go, Python, FastAPI, Rails, Spring Boot, Laravel, Flutter, Swift, Android, Kotlin, Rust.
+
+Each file: properly scoped globs, activation mode set, tested in Agent Mode.
+
+→ [oliviacraftlat.gumroad.com/l/wyaeil](https://oliviacraftlat.gumroad.com/l/wyaeil) — $27 one-time
+
+---
+
+Built by [@OliviaCraftLat](https://x.com/OliviaCraftLat)
