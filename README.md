@@ -1,68 +1,68 @@
-# Cursor Rules Pack — Free Starter Kit
+# AI Agent & Cursor Rules — Free Starter Kit
 
-> Pre-built `.mdc` rules and `CLAUDE.md` templates for developers using Cursor Agent Mode and Claude Code.
+> Practical templates and rules for developers running Claude Code, Cursor, or any always-on AI agent.
+
+---
+
+## 🆕 Personal Agent Starter Kit — $17
+
+**Just launched:** 7 production-tested templates to run your own always-on AI agent.
+
+| Template | What it does |
+|---|---|
+| HEARTBEAT.md | Check-in protocol: pre-flight, revenue watch, task watchdog |
+| SIGNAL_QUEUE.md | Priority task queue with rate-limit handling |
+| FALLBACK_MATRIX.md | When channel fails → what to do next |
+| NOTIFICATION_RULES.md | When to interrupt the human (and when NOT to) |
+| CLAUDE_AGENT.md | CLAUDE.md tuned for autonomous operation |
+| DAILY_REVIEW_LOG.md | Structured daily log template |
+| SETUP_GUIDE.md | Step-by-step implementation guide |
+
+**→ [https://oliviacraftlat.gumroad.com/l/fucuao](https://oliviacraftlat.gumroad.com/l/fucuao) — $17 one-time**
+
+---
+
+## Free Cursor Rules Starter
+
+Pre-built `.mdc` files and `CLAUDE.md` templates for Cursor Agent Mode and Claude Code.
 
 **Free starter** → [oliviacraftlat.gumroad.com/l/pomoo](https://oliviacraftlat.gumroad.com/l/pomoo)
 **Full pack (50 files, 14 stacks)** → [oliviacraftlat.gumroad.com/l/wyaeil](https://oliviacraftlat.gumroad.com/l/wyaeil) — $27
 
 ---
 
-## The problem this solves
+## What's in this repo
 
-Every new Cursor or Claude Code session starts blank. The model doesn't remember your conventions, architecture decisions, or "never do X" rules.
+### `.cursor/rules/` — Ready-to-use .mdc files
 
-You re-explain them every session. Or you write a rules file once, accumulate 400 lines, and watch it fail silently after context compaction.
+| File | Scope |
+|---|---|
+| `typescript-conventions.mdc` | `**/*.ts, **/*.tsx` |
+| `python-conventions.mdc` | `**/*.py` |
+| `anti-scope-creep.mdc` | `**/*` (Always Apply) |
 
-This kit gives you a structured, minimal starting point that actually works.
+### `CLAUDE.md` — Starter template
 
----
-
-## What's included (free starter)
-
-- `CLAUDE.md` template — three-section structure that survives compaction
-- `.cursor/rules/` templates for TypeScript, Python, Go, React
-- Anti scope creep rule
-- Compaction amnesia prevention checklist
-- Context bloat prevention rules
+Three-section structure that survives context compaction: hard constraints → project conventions → escalation rule.
 
 ---
 
-## Gists (copy-paste ready)
+## Common problems this fixes
 
-| Gist | Use case |
-|------|----------|
-| [How to set up .mdc for multi-language repos](https://gist.github.com/oliviacraft/281f8ba971d238e8ff0ae87e2e99f21c) | Python + Java + TypeScript in one project |
-| [Anti scope creep .mdc rule](https://gist.github.com/oliviacraft/2b2fbfcb0c3541ee1768be9a2a379eba) | Prevent agent from expanding task scope |
+- **Rules ignored in Agent Mode** → scope .mdc files with proper globs
+- **Context lost after compaction** → minimal three-section CLAUDE.md
+- **Scope creep across sessions** → anti-scope-creep.mdc (Always Apply)
+- **Agent needs no supervision** → Personal Agent Starter Kit
 
 ---
 
 ## Articles
 
-| Article | Pain addressed |
-|---------|---------------|
-| [How to Fix Cursor Compaction Amnesia](https://dev.to/olivia_craft/how-to-fix-cursor-compaction-amnesia-and-why-your-rules-stop-working-1c19) | Rules stop working after context compaction |
-
----
-
-## Common failures this fixes
-
-**Rules ignored in Agent Mode** → scope your `.mdc` with proper globs, not a single root `.cursorrules`
-
-**Context lost after compaction** → three-section CLAUDE.md, hard constraints first
-
-**Scope creep across sessions** → explicit scope constraints in always-apply rule
-
-**Rules deleted on Cursor launch** → migrate from root `.cursorrules` to `.cursor/rules/*.mdc`
-
----
-
-## Full pack
-
-50 `.mdc` files across 14 stacks: React, Next.js, TypeScript, Go, Python, FastAPI, Rails, Spring Boot, Laravel, Flutter, Swift, Android, Kotlin, Rust.
-
-Each file: properly scoped globs, activation mode set, tested in Agent Mode.
-
-→ [oliviacraftlat.gumroad.com/l/wyaeil](https://oliviacraftlat.gumroad.com/l/wyaeil) — $27 one-time
+| Article | Pain |
+|---|---|
+| [How to Fix Cursor Compaction Amnesia](https://dev.to/olivia_craft/how-to-fix-cursor-compaction-amnesia-and-why-your-rules-stop-working-1c19) | Rules degrade after compaction |
+| [Big Tech Just Validated Personal Agents](https://dev.to/olivia_craft/big-tech-just-validated-personal-agents-heres-how-to-run-your-own-57ao) | How to run your own always-on agent |
+| [What I'm learning selling devtools](https://dev.to/olivia_craft/what-im-learning-from-selling-tiny-devtools-for-cursor-and-claude-code-day-65-54-42dl) | Builder perspective |
 
 ---
 
